@@ -6,24 +6,40 @@
 
 /* =============== CSS Variables =============== */
 :root {
-    --bg-color: #333;
-    --text-color: white;
-    --accent-color: #007BFF;
-    --accent-hover: #0069d9;
-    --font-stack: 'Arial', sans-serif;
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --light-gray: #f2f2f2;
+    --medium-gray: #d9d9d9;
+    --dark-gray: #333333;
+    --font-stack: 'Inter', sans-serif;
+    --grid-gap: 20px;
+    --transition-speed: 0.3s;
 }
-/* =============== Nav Bar =============== */
+
+/* =============== Typography =============== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-stack);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+}
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-stack);
-    line-height: 1.6;
+    line-height: 1.4;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
+
+/* =============== Nav Bar =============== */
 header {
-    padding: 15px 20px;
-    background: transparent;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--light-gray);
+    margin-bottom: 30px;
 }
 
 .navbar {
@@ -33,83 +49,68 @@ header {
 }
 
 .logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-weight: 700;
     color: var(--text-color);
     text-decoration: none;
-}
-
-.explore-nav {
-    font-size: 1rem;
-    color: var(--text-color);
-    text-decoration: none;
-    display: none;
+    letter-spacing: 1px;
 }
 
 .nav-links {
-    list-style: none;
     display: flex;
-}
-
-.nav-links li {
-    margin: 0 1.5rem;
+    list-style: none;
+    gap: 30px;
 }
 
 .nav-links a {
-    font-size: 1rem;
-    color: var(--text-color);
     text-decoration: none;
-    transition: color 0.3s ease;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    /* transition: opacity var(--transition-speed) ease; */
 }
 
 .nav-links a:hover {
-    color: var(--accent-color);
+    opacity: 0.7;
 }
 
-.menu-toggle {
+/* =============== Search Box =============== */
+
+.search-box {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 300px;
+    padding: 10px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: none;
-    font-size: 2rem;
-    cursor: pointer;
-    user-select: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--transition-speed) ease;
+    z-index: 10;
 }
 
-/* =============== Hero Section =============== */
-.hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: 90vh;
-    padding: 0 20px;
+.search-box.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
-  .hero-text .headline {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-}
-
-.hero-text .sub-heading {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.call-to-action {
-    padding: 0.75rem 1.5rem;
-    background-color: var(--accent-color);
-    border: none;
-    border-radius: 5px;
-    color: var(--text-color);
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.call-to-action:hover {
-    background-color: var(--accent-hover);
+.search-input {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--medium-gray);
+    font-family: var(--font-stack);
+    font-size: 0.9rem;
 }
 
 /* Responsive Styles */
-@media screen and (max-width: 738px) {
+/* @media screen and (max-width: 738px) {
     .menu-toggle {
       display: block;
     }
@@ -137,4 +138,4 @@ header {
     .nav-links.active {
       display: flex;
     }
-}
+} */
